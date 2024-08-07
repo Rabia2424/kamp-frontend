@@ -2,33 +2,35 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 
-<div class="mb-3">
-    <label for="filterText" class="form-label">Search Product</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter something for searching">
-</div>
-<div class="alert alert-success" *ngIf="filterText.length>2">
-    {{filterText}} searched
-</div>
-
-<table *ngIf="dataLoaded!=false" class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>PriceWithVat</th>
-            <th>Stock Number</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr *ngFor="let product of products | filterPipe:filterText">
-        <td>{{product.productId}}</td>
-        <td>{{product.productName |uppercase}}</td>
-        <td>{{product.categoryId}}</td>
-        <td>{{product.unitPrice}}</td>
-        <td>{{product.unitPrice | vatAdded:18 |currency }}</td>
-        <td>{{product.unitsInStock}}</td>
-        <td><button (click)="addToCart(product)" class="btn btn-success">Add To Cart</button></td>
-    </tr>
-</table>
+<div class="row">
+        <div class="mb-3">
+            <label for="filterText" class="form-label">Search Product</label>
+            <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter something for searching">
+        </div>
+        <div class="alert alert-success" *ngIf="filterText.length>2">
+            {{filterText}} searched
+        </div>
+        
+        <table *ngIf="dataLoaded!=false" class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>PriceWithVat</th>
+                    <th>Stock Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr *ngFor="let product of products | filterPipe:filterText">
+                <td>{{product.productId}}</td>
+                <td>{{product.productName |uppercase}}</td>
+                <td>{{product.categoryId}}</td>
+                <td>{{product.unitPrice}}</td>
+                <td>{{product.unitPrice | vatAdded:18 |currency }}</td>
+                <td>{{product.unitsInStock}}</td>
+                <td><button (click)="addToCart(product)" class="btn btn-success">Add To Cart</button></td>
+            </tr>
+        </table>
+  </div>

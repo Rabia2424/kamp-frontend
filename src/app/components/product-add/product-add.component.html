@@ -1,0 +1,52 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Add Product</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="productAddForm">
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              id="productName"
+              formControlName="productName"
+              class="form-control"
+              placeholder="Product Name"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              type="number"
+              id="categoryId"
+              formControlName="categoryId"
+              class="form-control"
+              placeholder="Category"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              type="number"
+              id="unitsInStock"
+              formControlName="unitsInStock"
+              class="form-control"
+              placeholder="Stock number"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              type="number"
+              id="unitPrice"
+              formControlName="unitPrice"
+              class="form-control"
+              placeholder="Unit Price"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="add()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

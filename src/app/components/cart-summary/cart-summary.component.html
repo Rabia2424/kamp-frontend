@@ -4,9 +4,9 @@
     </a>
     <ul class="dropdown-menu">
       <li *ngFor="let cartItem of cartItems"><a
-         class="dropdown-item"><span class="badge bg-secondary">{{cartItem.quantity}}</span>{{cartItem.product.productName}}
-         <span (click)="removeFromCart(cartItem.product)" class="badge bg-secondary">Delete</span></a></li>
+         class="dropdown-item"><span class="badge bg-secondary">{{cartItem.quantity}}</span>{{cartItem.product?.productName}}
+         <span (click)="removeFromCart(cartItem)" class="badge bg-secondary">Delete</span></a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item">Go To Cart</a></li>
+      <li><a routerLink="/products/cartDetail" class="dropdown-item">Go To Cart</a></li>
     </ul>
   </li>

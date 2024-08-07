@@ -1,34 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { CartItems } from '../models/cartItems';
 import { CartItem } from '../models/cartItem';
+import { HttpClient } from '@angular/common/http';
+import { Cart } from '../models/cart';
+import { Observable } from 'rxjs';
+import { ResponseModel } from '../models/responseModel';
+import { ListResponseModel } from '../models/ListResponseModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  constructor() {}
+  constructor(private httpClient:HttpClient) {}
 
-  addToCart(product: Product) {
-    let item = CartItems.find((c) => c.product.productId == product.productId);
-    if (item) {
-      item.quantity += 1;
-    } else {
-      let cartItem = new CartItem();
-      cartItem.product = product;
-      cartItem.quantity = 1;
-      CartItems.push(cartItem);
-    }
+  apiUrl="https://localhost:44384/api/";
+
+  addToCart(cartItem:CartItem):Observable<ResponseModel> {
+   let newPath = this.apiUrl + "carts/addtocart";
+   return this.httpClient.post<ResponseModel>(newPath,cartItem);
   }
 
-  list():CartItem[]{
-    return CartItems;
+  getCart(): Observable<Cart> {
+    let newPath = this.apiUrl + "carts/getcart";
+    return this.httpClient.get<Cart>(newPath);
   }
 
-  removeFromCart(product:Product){
-    let item = CartItems.find(c=>c.product.productId==product.productId)
-    if(item){
-      CartItems.splice(CartItems.indexOf(item),1);
-    }
+  updateCart(cart:Cart):Observable<ResponseModel> {
+    let newPath = this.apiUrl + "carts/updatecartitem";
+    return this.httpClient.post<ResponseModel>(newPath,cart);
+   }
+
+  list():Observable<CartItem[]>{
+    let newPath = this.apiUrl + "carts/getcartbyuserid";
+    return this.httpClient.get<CartItem[]>(newPath);
   }
+
+  removeFromCart(cartItem:CartItem):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "carts/removefromcart";
+    return this.httpClient.post<ResponseModel>(newPath,cartItem);
+  }
+
 }

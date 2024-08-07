@@ -8,7 +8,8 @@ import { CategoryComponent } from './components/category/category.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ProductComponent,NaviComponent,CategoryComponent],
+  imports: [RouterOutlet,ProductComponent,NaviComponent,CategoryComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

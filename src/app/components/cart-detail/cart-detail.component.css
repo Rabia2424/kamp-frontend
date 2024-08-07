@@ -1,0 +1,17 @@
+.back-button{
+    background-color: black;
+    color:white;
+    margin-top: 5px;
+    padding:10px;
+}
+
+.back-button i{
+    padding-right: 5px;
+}
+
+.btn-delete{
+    background-color: #301229;
+    color:white;
+    margin-left: 8px;
+    margin-right: 8px;
+}
