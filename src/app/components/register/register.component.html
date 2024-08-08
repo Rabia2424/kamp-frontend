@@ -1,7 +1,15 @@
 <div class="wrapper-round">
   <div class="wrapper">
-    <form [formGroup]="loginForm">
-      <h2>Login</h2>
+    <form [formGroup]="registerForm">
+      <h2>Register</h2>
+      <div class="input-field">
+        <input type="text" formControlName="firstName" required />
+        <label>Enter your first name</label>
+      </div>
+      <div class="input-field">
+        <input type="text" formControlName="lastName" required />
+        <label>Enter your last name</label>
+      </div>
       <div class="input-field">
         <input type="email" formControlName="email" required />
         <label>Enter your email</label>
@@ -15,11 +23,10 @@
           <input type="checkbox" id="remember" />
           <p>Remember me</p>
         </label>
-        <a href="#">Forgot password?</a>
       </div>
-      <button routerLink="/products" (click)="login()">Log In</button>
+      <button routerLink="/login" (click)="register()">Register</button>
       <div class="register">
-        <p>Don't have an account? <a routerLink="/register">Register</a></p>
+        <p>Redirect to Login Page -> <a routerLink="/login">Sign In</a></p>
       </div>
     </form>
   </div>

@@ -16,13 +16,10 @@
             />
           </div>
           <div class="form-group mb-3">
-            <input
-              type="number"
-              id="categoryId"
-              formControlName="categoryId"
-              class="form-control"
-              placeholder="Category"
-            />
+            <select formControlName="categoryId" class="form-control custom-select" aria-label="Select a category">
+              <option value="" disabled selected>Select a category</option>
+              <option *ngFor="let category of categories" value="{{category.categoryId}}">{{category.categoryName}}</option>
+            </select>
           </div>
           <div class="form-group mb-3">
             <input

@@ -7,6 +7,9 @@ import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { CartItem } from '../../models/cartItem';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/category';
 
 
 
@@ -26,11 +29,15 @@ export class ProductAddComponent implements OnInit{
   constructor(private formBuilder:FormBuilder,
     private productService:ProductService,
     private toastrService:ToastrService,
+    private categoryService:CategoryService
   ){};
   
   ngOnInit(): void {
     this.createProductAddForm();
+    this.loadCategories();
   }
+
+  categories:Category[] = [];
 
   createProductAddForm(){
     this.productAddForm = this.formBuilder.group({
@@ -39,6 +46,12 @@ export class ProductAddComponent implements OnInit{
       unitsInStock:["",Validators.required],
       categoryId:["",Validators.required]
     })
+  }
+
+  loadCategories(){
+    this.categoryService.getCategories().subscribe(response=>{
+      this.categories = response.data;
+    });
   }
 
   add(){
